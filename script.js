@@ -33,22 +33,21 @@ function removeOldGrid() {
     }
 }
 
-function createNewGrid() {
-    const btn = document.querySelector('.grid-changer');
-    btn.addEventListener('click', () => {
-        removeOldGrid();
-        createGrid(askUserSize());
-    });
-
-}
-
 function askUserSize() {
     const size = parseInt(prompt('Please enter number of squares per side for the new grid', '16'));
     return size;
 }
 
+function createNewGrid() {
+    removeOldGrid();
+    createGrid(askUserSize());
+    
+}
+
+
 const container = document.querySelector('.container');
+const btn = document.querySelector('.grid-changer');
+
+btn.addEventListener('click', createNewGrid);
 
 createGrid(16);
-createNewGrid();
-
