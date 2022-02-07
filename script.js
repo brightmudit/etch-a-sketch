@@ -1,5 +1,3 @@
-const container = document.querySelector('.container');
-
 function createGrid(size) {
     for (let i = 0; i < size; i++) {
         const row = document.createElement('div');
@@ -11,13 +9,46 @@ function createGrid(size) {
         }
         container.appendChild(row);
     }
+    changeGridColor();
 }
 
 function changeGridColor() {
     const grids = document.querySelectorAll('.grid');
     grids.forEach(grid => grid.addEventListener('mouseover', () => {
-       grid.style.backgroundColor = 'black';
+        grid.style.backgroundColor = 'black';
     }));
 }
+
+
+function removeOldGrid() {
+    const rows = document.querySelectorAll('.row');
+    const size = rows.length;
+    for (let i = 0; i < size; i++) {
+        const row = document.querySelector('.row');
+        for (let j = 0; j < size; j++) {
+            const grid = document.querySelector('.grid');
+            row.removeChild(grid);
+        }
+        container.removeChild(row);
+    }
+}
+
+function createNewGrid() {
+    const btn = document.querySelector('.grid-changer');
+    btn.addEventListener('click', () => {
+        removeOldGrid();
+        createGrid(askUserSize());
+    });
+
+}
+
+function askUserSize() {
+    const size = parseInt(prompt('Please enter number of squares per side for the new grid', '16'));
+    return size;
+}
+
+const container = document.querySelector('.container');
+
 createGrid(16);
-changeGridColor();
+createNewGrid();
+
