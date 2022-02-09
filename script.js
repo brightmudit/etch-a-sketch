@@ -5,20 +5,16 @@ function createGrid(size) {
         for (let j = 0; j < size; j++) {
             const grid = document.createElement('div');
             grid.classList.add('grid');
+            grid.addEventListener('mouseover', changeGridColor);
             row.appendChild(grid);
         }
         container.appendChild(row);
     }
-    changeGridColor();
 }
 
-function changeGridColor() {
-    const grids = document.querySelectorAll('.grid');
-    grids.forEach(grid => grid.addEventListener('mouseover', () => {
-        grid.style.backgroundColor = 'black';
-    }));
+function changeGridColor(e) {
+    if(e.buttons === 1) e.target.style.backgroundColor = 'black';
 }
-
 
 function removeOldGrid() {
     const rows = document.querySelectorAll('.row');
@@ -47,6 +43,9 @@ function createNewGrid() {
 
 const container = document.querySelector('.container');
 const btn = document.querySelector('.grid-changer');
+let mouseDown = false;
+document.body.addEventListener('mousedown', () => mouseDown = true);
+document.body.addEventListener('mouseup', () => mouseDown = false);
 
 btn.addEventListener('click', createNewGrid);
 
