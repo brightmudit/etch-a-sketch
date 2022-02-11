@@ -49,6 +49,6 @@ let currentSize = DEFAULT_SIZE;
 const container = document.querySelector('.container');
 const btn = document.querySelector('.grid-changer');
 
-btn.addEventListener('click', () => createNewGrid(currentSize));
+// btn.addEventListener('click', () => createNewGrid(currentSize));
 
 createGrid(currentSize);
