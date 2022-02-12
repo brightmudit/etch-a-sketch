@@ -80,8 +80,8 @@
     border-radius: 50%;
     border: 2px solid #336cc0;
 }
+.color-picker .color-chooser, 
 .color-picker .black {
-    /* color: black; */
     background: black;
 }
 .color-picker .rainbow {
@@ -100,10 +100,10 @@
     background: #336cc0;
     text-align: center;
 }
-.bottom-section #eraser {
+.bottom-section .eraser {
     background: #52b37f;
 }
-.bottom-section #clear {
+.bottom-section .clear {
     background: #f44336;
 }
 .container {

@@ -13,7 +13,10 @@ function createGrid(size) {
 }
 
 function changeGridColor(e) {
-    if(e.buttons === 1) e.target.style.backgroundColor = generateRandomColor();
+    if(e.buttons === 1) {
+        if (currentColor === 'rainbow') e.target.style.backgroundColor = generateRandomColor();
+        else  e.target.style.backgroundColor = currentColor;
+    }
 }
 
 function generateRandomColor() {
@@ -50,19 +53,41 @@ function getSize(id) {
         return 32;
     } else if (id === 'size-64') {
         return 64;
-    } else if (id === 'size-94') {
-        return 94;
+    } else if (id === 'size-84') {
+        return 84;
     }
 }
 
+function changeCurrentColor(value) {
+    currentColor = value;
+}
+
+function clearGrid() {
+    const grids = document.querySelectorAll('.grid');
+    grids.forEach(grid => {
+        grid.style.backgroundColor = 'white';
+    });
+}
 // Global Variables
 const DEFAULT_SIZE = 16;
+const DEFAULT_COLOR = 'black';
 let currentSize = DEFAULT_SIZE;
+let currentColor = DEFAULT_COLOR;
 const container = document.querySelector('.container');
-const btns = document.querySelectorAll('.size-btn');
+const sizeBtns = document.querySelectorAll('.size-btn');
+const colorChooserBtn = document.querySelector('.color-chooser');
+const blackChooserBtn = document.querySelector('.black');
+const rainbowChooserBtn = document.querySelector('.rainbow');
+const eraserBtn = document.querySelector('.eraser');
+const clearBtn = document.querySelector('.clear');
 
-btns.forEach(btn => {
+sizeBtns.forEach(btn => {
     btn.addEventListener('click', () => createNewGrid(currentSize, getSize(btn.id)));
 });
 
+blackChooserBtn.addEventListener('click', () => changeCurrentColor('black'));
+rainbowChooserBtn.addEventListener('click', () => changeCurrentColor('rainbow'));
+
+eraserBtn.addEventListener('click', () => changeCurrentColor('white'));
+clearBtn.addEventListener('click', clearGrid);
 createGrid(currentSize);
