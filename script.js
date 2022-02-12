@@ -36,19 +36,33 @@ function askUserSize() {
     return currentSize;
 }
 
-function createNewGrid(currentSize) {
-    removeOldGrid(currentSize);
-    createGrid(askUserSize());
+function createNewGrid(oldSize, newSize) {
+    removeOldGrid(oldSize);
+    currentSize = newSize;
+    createGrid(currentSize);
     
 }
 
+function getSize(id) {
+    if (id === 'size-16') {
+        return 16;
+    } else if (id === 'size-32') {
+        return 32;
+    } else if (id === 'size-64') {
+        return 64;
+    } else if (id === 'size-94') {
+        return 94;
+    }
+}
 
-// Important Variables
+// Global Variables
 const DEFAULT_SIZE = 16;
 let currentSize = DEFAULT_SIZE;
 const container = document.querySelector('.container');
-const btn = document.querySelector('.grid-changer');
+const btns = document.querySelectorAll('.size-btn');
 
-// btn.addEventListener('click', () => createNewGrid(currentSize));
+btns.forEach(btn => {
+    btn.addEventListener('click', () => createNewGrid(currentSize, getSize(btn.id)));
+});
 
 createGrid(currentSize);
