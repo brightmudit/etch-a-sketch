@@ -75,7 +75,7 @@ let currentSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
 const container = document.querySelector('.container');
 const sizeBtns = document.querySelectorAll('.size-btn');
-const colorChooserBtn = document.querySelector('.color-chooser');
+const colorPicker = document.querySelector('.color-chooser');
 const blackChooserBtn = document.querySelector('.black');
 const rainbowChooserBtn = document.querySelector('.rainbow');
 const eraserBtn = document.querySelector('.eraser');
@@ -88,6 +88,7 @@ sizeBtns.forEach(btn => {
 blackChooserBtn.addEventListener('click', () => changeCurrentColor('black'));
 rainbowChooserBtn.addEventListener('click', () => changeCurrentColor('rainbow'));
 
+colorPicker.addEventListener('input', (e)=> changeCurrentColor(e.target.value));
 eraserBtn.addEventListener('click', () => changeCurrentColor('white'));
 clearBtn.addEventListener('click', clearGrid);
 createGrid(currentSize);
