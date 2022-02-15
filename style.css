@@ -9,7 +9,6 @@
 .main {
     display: flex;
     flex-direction: column;
-    border: 1px solid blue;
     align-items: center;
     justify-content: center;
     background: #336cc0;
@@ -32,27 +31,20 @@
     border: 3px ridge black;
     border-radius: 20px;
     display: flex;
-    /* justify-content: space-around; */
     flex-direction: column;
     background: #f8f9f4;
-    /* margin: 0 auto; */
 }
 .box .tools-container .upper-section {
     display: flex;
-    /* justify-content: space-around; */
     height: 90%;
-    /* border: 1px solid orange; */
 }
 .upper-section .size-picker {
     display: flex;
     flex-direction: column;
     width: 50%;
-    /* height: auto; */
-    /* border: 1px solid; */
     font-size: 20px;
     align-items: center;
     justify-content: space-around;
-    /* background: #5fbced; */
 }
 .size-picker div {
     display: flex;
@@ -67,7 +59,6 @@
     cursor: pointer;
 }
 .upper-section .color-picker {
-    /* border: 1px solid red; */
     width: 50%;
     display: flex;
     align-items: center;
@@ -140,6 +131,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
 }
 .footer a {
     padding: 4px;
