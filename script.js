@@ -6,6 +6,7 @@ function createGrid(size) {
             const grid = document.createElement('div');
             grid.classList.add('grid');
             grid.addEventListener('mouseover', changeGridColor);
+            grid.ondragstart = () => {return false};
             row.appendChild(grid);
         }
         container.appendChild(row);
